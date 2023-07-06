@@ -1,8 +1,9 @@
+@file:SuppressLint("SetJavaScriptEnabled")
+
 package dev.materii.composecustomtabs.ui
 
 import android.annotation.SuppressLint
 import android.webkit.WebSettings
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,30 +16,46 @@ import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.contentColorFor
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
 import com.google.accompanist.web.WebView
 import dev.materii.composecustomtabs.ext.android.uri
-import dev.materii.composecustomtabs.state.AndroidCustomTabState
 import dev.materii.composecustomtabs.state.CustomTabState
+import dev.materii.composecustomtabs.state.LoadState
 
 @Composable
-fun AndroidCustomTab(
+actual fun CustomTab(
     state: CustomTabState,
+    modifier: Modifier
+) {
+    CustomTab(
+        state = state,
+        modifier = modifier,
+        webviewSettings = { javaScriptEnabled = true }
+    )
+}
+
+@Composable
+fun CustomTab(
+    state: CustomTabState,
+    modifier: Modifier = Modifier,
+    webviewSettings: WebSettings.() -> Unit = { javaScriptEnabled = true },
     titleBar: ComposableContent = { AndroidCustomTabTitleBar(state) },
-    webpage: ComposableContent = { AndroidCustomTabWebpage(state) }
+    webpage: ComposableContent = {
+        AndroidCustomTabWebpage(
+            state,
+            webviewSettings = webviewSettings
+        )
+    }
 ) {
     Scaffold(
         topBar = {
             Column {
                 titleBar()
 
-                (state.loadState as? CustomTabState.LoadState.Loading)?.let {
+                (state.loadState as? LoadState.Loading)?.let {
                     LinearProgressIndicator(
                         progress = it.progress,
                         modifier = Modifier.fillMaxWidth(),
@@ -88,30 +105,17 @@ fun AndroidCustomTabTitleBar(
 fun AndroidCustomTabWebpage(
     state: CustomTabState,
     modifier: Modifier = Modifier,
-    @SuppressLint("SetJavaScriptEnabled") webviewSettings: WebSettings.() -> Unit = { javaScriptEnabled = true }
+    webviewSettings: WebSettings.() -> Unit = { javaScriptEnabled = true }
 ) {
-    if(state !is AndroidCustomTabState) {
-        Box(modifier = Modifier.fillMaxSize()) {
-
-        }
-    } else {
-        WebView(
-            state = state.state,
-            navigator = state.navigator,
-            client = state.client,
-            chromeClient = state.webChromeClient,
-            modifier = Modifier.fillMaxSize()
-        ) { ctx ->
-            android.webkit.WebView(ctx).apply {
-                settings.apply(webviewSettings)
-            }
+    WebView(
+        state = state.state,
+        navigator = state.navigator,
+        client = state.client,
+        chromeClient = state.webChromeClient,
+        modifier = Modifier.fillMaxSize()
+    ) { ctx ->
+        android.webkit.WebView(ctx).apply {
+            settings.apply(webviewSettings)
         }
     }
-}
-
-@Composable
-actual fun CustomTab(
-    state: CustomTabState
-) {
-    AndroidCustomTab(state)
 }
