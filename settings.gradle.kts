@@ -16,6 +16,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Compose Custom Tab"
-include(":app")
+include(":demo-material2")
+include(":demo-material3")
 include(":core")
 include(":customtab")
+include(":customtab-material3")
