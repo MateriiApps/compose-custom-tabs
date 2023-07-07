@@ -19,5 +19,5 @@ rootProject.name = "Compose Custom Tab"
 include(":demo-material2")
 include(":demo-material3")
 include(":core")
-include(":customtab")
-include(":customtab-material3")
+include(":customtabs")
+include(":customtabs-material3")

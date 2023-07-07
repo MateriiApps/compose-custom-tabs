@@ -54,6 +54,5 @@ dependencies {
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.compose)
     implementation(libs.bundles.voyager)
-
-    implementation(project(":customtab-material3"))
+    implementation(project(":customtabs-material3"))
 }
