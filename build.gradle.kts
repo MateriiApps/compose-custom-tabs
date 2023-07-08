@@ -7,4 +7,16 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.multiplatform) apply false
 }
-true // Needed to make the Suppress annotation work for the plugins block
+
+subprojects {
+    group = "dev.materii.compose-custom-tabs"
+    version = "1.0.0-alpha01"
+
+    repositories {
+        repositories {
+            google()
+            mavenCentral()
+            maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        }
+    }
+}

@@ -4,12 +4,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
-import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextOverflow
-import dev.materii.composecustomtabs.ext.android.uri
 import dev.materii.composecustomtabs.state.CustomTabState
 
 @Composable
