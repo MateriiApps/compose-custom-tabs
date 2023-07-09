@@ -35,6 +35,9 @@ jobs:
           distribution: zulu
           cache: gradle
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2.0.10
+
       - name: Test version
         id: version
         run: |
