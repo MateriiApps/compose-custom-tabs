@@ -4,17 +4,19 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
+import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import dev.materii.composecustomtabs.state.CustomTabState
 
 @Composable
-fun CustomTabTitleBar(
+fun BaseCustomTabTitleBar(
     state: CustomTabState,
     modifier: Modifier = Modifier,
-    title: ComposableContent = {  },
-    subTitle: ComposableContent = {  },
+    title: ComposableContent = { Text(state.title ?: "No Title", maxLines = 1, overflow = TextOverflow.Ellipsis) },
+    subTitle: ComposableContent = { Text(state.url ?: "about:blank") },
     navigationButton: ComposableContent? = null,
     actions: RowContent = {}
 ) {

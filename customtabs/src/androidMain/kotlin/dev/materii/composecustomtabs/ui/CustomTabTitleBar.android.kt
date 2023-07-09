@@ -8,7 +8,7 @@ import dev.materii.composecustomtabs.ext.android.uri
 import dev.materii.composecustomtabs.state.CustomTabState
 
 @Composable
-fun AndroidCustomTabTitleBar(
+fun CustomTabTitleBar(
     state: CustomTabState,
     modifier: Modifier = Modifier,
     title: ComposableContent = { Text(state.title ?: "No Title", maxLines = 1, overflow = TextOverflow.Ellipsis) },
@@ -16,7 +16,7 @@ fun AndroidCustomTabTitleBar(
     navigationButton: ComposableContent? = null,
     actions: RowContent = {}
 ) {
-    CustomTabTitleBar(
+    BaseCustomTabTitleBar(
         state = state,
         modifier = modifier,
         title = title,

@@ -25,7 +25,7 @@ fun CustomTab(
     state: CustomTabState,
     modifier: Modifier = Modifier,
     webviewSettings: WebSettings.() -> Unit = { javaScriptEnabled = true },
-    titleBar: ComposableContent = { AndroidCustomTabTitleBar(state) },
+    titleBar: ComposableContent = { CustomTabTitleBar(state) },
     webpage: ComposableContent = {
         AndroidCustomTabWebpage(
             state,
@@ -33,7 +33,7 @@ fun CustomTab(
         )
     }
 ) {
-    CustomTab(
+    BaseCustomTab(
         state = state,
         modifier = modifier,
         titleBar = titleBar,

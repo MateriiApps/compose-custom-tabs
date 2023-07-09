@@ -34,5 +34,5 @@ actual fun CustomTabWebpage(
     state: CustomTabState,
     modifier: Modifier
 ) {
-    AndroidCustomTab(state, modifier)
+    AndroidCustomTabWebpage(state, modifier)
 }

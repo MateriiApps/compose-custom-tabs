@@ -21,11 +21,11 @@ expect fun CustomTab(
 )
 
 @Composable
-fun CustomTab(
+fun BaseCustomTab(
     state: CustomTabState,
     modifier: Modifier = Modifier,
-    titleBar: ComposableContent = { },
-    webpage: ComposableContent = {}
+    titleBar: ComposableContent = { BaseCustomTabTitleBar(state) },
+    webpage: ComposableContent = { CustomTabWebpage(state) }
 ) {
     Scaffold(
         topBar = {

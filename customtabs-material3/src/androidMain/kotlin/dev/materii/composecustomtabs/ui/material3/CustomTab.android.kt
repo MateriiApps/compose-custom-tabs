@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import dev.materii.composecustomtabs.state.CustomTabState
 
 @Composable
-fun AndroidCustomTab(
+fun CustomTab(
     state: CustomTabState,
     modifier: Modifier = Modifier,
     webviewSettings: WebSettings.() -> Unit = { javaScriptEnabled = true },
@@ -20,7 +20,7 @@ fun AndroidCustomTab(
         )
     }
 ) {
-    CustomTab(
+    BaseCustomTab(
         state = state,
         modifier = modifier,
         titleBar = titleBar,

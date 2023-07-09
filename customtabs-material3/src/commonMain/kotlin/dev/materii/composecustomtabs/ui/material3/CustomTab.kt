@@ -16,11 +16,11 @@ import dev.materii.composecustomtabs.state.LoadState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomTab(
+fun BaseCustomTab(
     state: CustomTabState,
     modifier: Modifier = Modifier,
-    titleBar: @Composable () -> Unit = { },
-    webpage: @Composable () -> Unit = { }
+    titleBar: @Composable () -> Unit = { BaseCustomTabTitleBar(state) },
+    webpage: @Composable () -> Unit = { CustomTabWebpage(state) }
 ) {
     Scaffold(
         topBar = {

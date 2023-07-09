@@ -11,16 +11,15 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
-import dev.materii.composecustomtabs.ext.android.uri
 import dev.materii.composecustomtabs.state.CustomTabState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomTabTitleBar(
+fun BaseCustomTabTitleBar(
     state: CustomTabState,
     modifier: Modifier = Modifier,
-    title: @Composable () -> Unit = { },
-    subTitle: @Composable () -> Unit = { },
+    title: @Composable () -> Unit = { Text(state.title ?: "No Title", maxLines = 1, overflow = TextOverflow.Ellipsis) },
+    subTitle: @Composable () -> Unit = { Text(state.url ?: "about:blank") },
     navigationButton: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {}
 ) {

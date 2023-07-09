@@ -7,5 +7,5 @@ import dev.materii.composecustomtabs.state.CustomTabState
 @Composable
 expect fun CustomTab(
     state: CustomTabState,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 )

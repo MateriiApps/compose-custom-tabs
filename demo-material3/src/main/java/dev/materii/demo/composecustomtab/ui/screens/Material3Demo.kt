@@ -9,6 +9,8 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import dev.materii.composecustomtabs.state.rememberCustomTabState
+import dev.materii.composecustomtabs.ui.material3.BaseCustomTab
+import dev.materii.composecustomtabs.ui.material3.BaseCustomTabTitleBar
 import dev.materii.composecustomtabs.ui.material3.CustomTab
 import dev.materii.composecustomtabs.ui.material3.CustomTabTitleBar
 import dev.materii.demo.composecustomtab.ui.theme.Material3Theme
