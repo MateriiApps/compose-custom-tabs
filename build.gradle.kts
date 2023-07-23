@@ -10,7 +10,7 @@ plugins {
 
 subprojects {
     group = "dev.materii.compose-custom-tabs"
-    version = "1.0.0-alpha01"
+    version = "1.0.0"
 
     repositories {
         repositories {
